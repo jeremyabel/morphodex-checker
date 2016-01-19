@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <!-- Made by @jabelsjabels in like 40 minutes. -->
+
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Morphodex Checker</title>
+  <style type="text/css">
+    #container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      max-width: 300px;
+      padding: 1rem;
+      width: 35%;
+    }
+
+    .morph {
+      margin: 2px;
+      background: #efefef;
+    }
+
+    .over {
+      border: 1px solid #000;
+      margin: 1px;
+    }
+
+    .active {
+      background: #0fe75b;
+    }
+
+    .active img {
+      opacity: 0.65;
+    }
+
+    #name {
+      background: #efefef;
+      font-family: sans-serif;
+      max-width: 300px;
+      padding: 4px;
+      text-align: center;
+      width: 35%;
+    }
+
+    .name-off {
+      opacity: 0.6;
+    }
+
+  </style>
+  </head>
+  <body>
+    <div id="container">
+      <span class="morph"><img src="img/baboon.png" alt="baboon"/></span>
+      <span class="morph"><img src="img/bat.png" alt="bat"/></span>
+      <span class="morph"><img src="img/beaver.png" alt="beaver"/></span>
+      <span class="morph"><img src="img/cat.png" alt="cat"/></span>
+      <span class="morph"><img src="img/cheetah.png" alt="cheetah"/></span>
+      <span class="morph"><img src="img/chimpanzee.png" alt="chimpanzee"/></span>
+      <span class="morph"><img src="img/coyote.png" alt="coyote"/></span>
+      <span class="morph"><img src="img/crab.png" alt="crab"/></span>
+      <span class="morph"><img src="img/deer.png" alt="deer"/></span>
+      <span class="morph"><img src="img/dog.png" alt="dog"/></span>
+      <span class="morph"><img src="img/dolphin.png" alt="dolphin"/></span>
+      <span class="morph"><img src="img/elephant.png" alt="elephant"/></span>
+      <span class="morph"><img src="img/fox.png" alt="fox"/></span>
+      <span class="morph"><img src="img/goat.png" alt="goat"/></span>
+      <span class="morph"><img src="img/grizzly.png" alt="grizzly"/></span>
+      <span class="morph"><img src="img/hippo.png" alt="hippo"/></span>
+      <span class="morph"><img src="img/kangaroo.png" alt="kangaroo"/></span>
+      <span class="morph"><img src="img/lion.png" alt="lion"/></span>
+      <span class="morph"><img src="img/mole.png" alt="mole"/></span>
+      <span class="morph"><img src="img/monkey.png" alt="monkey"/></span>
+      <span class="morph"><img src="img/mouse.png" alt="mouse"/></span>
+      <span class="morph"><img src="img/orca.png" alt="orca"/></span>
+      <span class="morph"><img src="img/polarbear.png" alt="polar bear"/></span>
+      <span class="morph"><img src="img/racoon.png" alt="racoon"/></span>
+      <span class="morph"><img src="img/rat.png" alt="rat"/></span>
+      <span class="morph"><img src="img/seagull.png" alt="seagull"/></span>
+      <span class="morph"><img src="img/salamander.png" alt="salamander"/></span>
+      <span class="morph"><img src="img/seal.png" alt="seal"/></span>
+      <span class="morph"><img src="img/shark.png" alt="shark"/></span>
+      <span class="morph"><img src="img/skunk.png" alt="skunk"/></span>
+      <span class="morph"><img src="img/snake.png" alt="snake"/></span>
+      <span class="morph"><img src="img/spider.png" alt="spider"/></span>
+      <span class="morph"><img src="img/squid.png" alt="squid"/></span>
+      <span class="morph"><img src="img/tiger.png" alt="tiger"/></span>
+      <span class="morph"><img src="img/trout.png" alt="trout"/></span>
+      <span class="morph"><img src="img/walrus.png" alt="walrus"/></span>
+      <span class="morph"><img src="img/weasel.png" alt="weasel"/></span>
+      <span class="morph"><img src="img/wolf.png" alt="wolf"/></span>
+    </div>
+
+    <div id="name" class="name-off">Select Morph</div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+     function autorun() {
+       var morphs = $('.morph');
+       var states = [];
+       $('.morph').each(function(el, i) {
+          $(this).attr('state', false);
+          states.push(false);
+       });
+
+       $('.morph').mouseover(function() {
+          $(this).addClass('over');
+          $('#name').text(titleCase($(this).children('img').attr('alt')));
+          $('#name').removeClass('name-off');
+       });
+
+       $('.morph').mouseout(function() {
+          $(this).removeClass('over');
+          $('#name').text('Select Morph');
+          $('#name').addClass('name-off');
+       });
+
+       $('.morph').click(function() {
+          var state = $(this).attr('state');
+          if (state == "true") {
+            $(this).attr('state', false);
+            $(this).removeClass('active');
+          } else {
+            $(this).attr('state', true);
+            $(this).addClass('active');
+          }
+       });
+     }
+
+     function titleCase(string) { return string.charAt(0).toUpperCase() + string.slice(1); }
+
+     if (document.addEventListener) document.addEventListener("DOMContentLoaded", autorun, false);
+     else if (document.attachEvent) document.attachEvent("onreadystatechange", autorun);
+     else window.onload = autorun;
+    </script>
+  </body>
+</html>
